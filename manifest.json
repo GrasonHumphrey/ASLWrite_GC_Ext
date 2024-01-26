@@ -1,0 +1,22 @@
+{
+    "name": "ASLWrite Viewer",
+    "version": "1.0.0",
+    "description": "View ASLWrite script",
+    "manifest_version": 3,
+    "author": "Grason Humphrey",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "ASLWrite Viewer"
+    },
+	"permissions": [
+		"contextMenus", "tabs", "activeTab", "scripting"
+	],
+	"background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+	"web_accessible_resources": [{ 
+	  "resources": ["/images/*.png"],
+	  "matches": ["<all_urls>"]
+	}]
+}
