@@ -1,7 +1,7 @@
 
 var canvas = document.createElement("canvas");
-canvas.width = 720 
-canvas.height = 500;
+canvas.width = 1080 
+canvas.height = 720;
 document.body.appendChild(canvas);
 canvas.id = "MyCanvas";
 
@@ -21,8 +21,13 @@ var cursorY = 100;
 
 var charDrawn = true;
 
-const xStart = 100;
-const yStart = 100;
+const xOrigin = 100;
+const yOrigin = 100;
+
+var xStart = 100;
+var yStart = 100;
+
+var numLines = 0;
 
 var charIndex = 0;
 var glyphIndex = 0;
@@ -39,7 +44,10 @@ const shiftXSmall = 0.5;
 //const shiftYBig = 0.85;
 // Try 0.6, 0.4
 const shiftYBig = 1;
-const shiftYSmall = 0.5;
+//const shiftYSmall = 0.5;
+const shiftYSmall = 0.33;
+
+const shiftYPixels = 22;
 
 const minYShift = 250;
 
@@ -62,6 +70,10 @@ async function translateText(){
   charIndex = 0;
       
   //document.getElementById("p1").innerHTML = encodedMsg.length;
+  xStart = xOrigin;
+  yStart = yOrigin;
+  numLines = 0;
+  
   cursorX = xStart;
   cursorY = yStart;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -96,6 +108,17 @@ async function translateText(){
 	else if (encodedMsg[charIndex] == "b"){
 		const char1 = new Image();
 		char1.src = chrome.runtime.getURL("images/B.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "B"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/B_2.png");
 		await char1.decode();
 		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
 		GetGlyphProps(encodedMsg, char1Glyph);
@@ -203,6 +226,9 @@ async function translateText(){
 	else if (encodedMsg[charIndex] == "_"){
 		cursorX += 3 * spaceFull * xScale;
 	}
+	else if (encodedMsg[charIndex] == "<"){
+		cursorX -= spaceFull * xScale;
+	}
 	
 	// Direction diacritics need two characters
 	else if (encodedMsg[charIndex] == "!"){
@@ -291,6 +317,43 @@ async function translateText(){
 		
 	}
 	
+	// Head diacritics need two characters
+  else if (encodedMsg[charIndex] == "}"){
+		
+		if (charIndex + 1 < encodedMsg.length){
+			charIndex += 1;
+			if (encodedMsg[charIndex] == "o") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Head_Side_Full.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			} else if (encodedMsg[charIndex] == "c") {
+				
+			} else {
+				charIndex -= 1;
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Head_Side_Full.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+				cursorX += curSpace;
+			}
+		} else {
+			const char1 = new Image();
+			char1.src = chrome.runtime.getURL("images/Head_Side_Full.png");
+			await char1.decode();
+			const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+			GetGlyphProps(encodedMsg, char1Glyph);
+			DrawGlyph(ctx, char1, char1Glyph);
+			cursorX += curSpace;
+		}
+	}
+	
 	// Movement diacritics need two characters
 	else if (encodedMsg[charIndex] == "@"){
 		
@@ -307,8 +370,20 @@ async function translateText(){
 				cursorX += curSpace;
 			} else if (encodedMsg[charIndex] == "c") {
 				
+			} else {
+				charIndex -= 1;
 			}
+		} else {
+			
 		}
+	}
+	
+	else if (encodedMsg[charIndex] == "\n"){
+		numLines += 1;
+		cursorX = xOrigin;
+		cursorY = yOrigin + numLines * shiftYPixels * 4;
+		xStart = cursorX;
+		yStart = cursorY;
 	}
 	
 	charIndex += 1;
@@ -334,22 +409,29 @@ function GetGlyphProps(msg, glyph) {
 			case "/": glyph.flipX = -1; break;
 			
 			case ",":
-				cursorY += shiftYBig * Math.max(fullH, minYShift) * yScale;
+				// cursorY += shiftYBig * Math.max(fullH, minYShift) * yScale;
+				cursorY += shiftYPixels * shiftYBig;
 				break;
 			case ".":
-				cursorY += shiftYSmall * Math.max(fullH, minYShift) * yScale;
+				// cursorY += shiftYSmall * Math.max(fullH, minYShift) * yScale;
+				cursorY += shiftYPixels * shiftYSmall;
 				break;
 			case ";":
-				cursorY -= shiftYSmall * Math.max(fullH, minYShift) * yScale;
+				//cursorY -= shiftYSmall * Math.max(fullH, minYShift) * yScale;
+				cursorY -= shiftYPixels * shiftYSmall;
 				break;
 			case "'":
-				cursorY -= shiftYBig * Math.max(fullH, minYShift) * yScale;
+				//cursorY -= shiftYBig * Math.max(fullH, minYShift) * yScale;
+				cursorY -= shiftYPixels * shiftXBig;
 				break;
 			
 			case " ":
 				
 				//curSpace = (glyph.width + spaceFull) * xScale;
 				curSpace = (fullW + spaceFull) * xScale;
+				return;
+			case "<":
+				curSpace = -1 * spaceFull * xScale;
 				return;
 			case "=":
 				//curSpace = shiftXBig * glyph.width * xScale;

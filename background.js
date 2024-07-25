@@ -1,13 +1,16 @@
 //Setting up the function to open the new tab
 function translate(info,tab)
 {
-  const { menuItemId } = info
+	const { menuItemId } = info
 
-  if (menuItemId === 'anyNameWillDo'){
+	if (menuItemId === 'anyNameWillDo'){
 	  // Translate action happens here
-    chrome.tabs.create({url: "index.html?msg=" + info.selectionText.trim()});
-	//chrome.tabs.create({url: "index.html"});
-	
+		if(info.selectionText){
+			chrome.tabs.create({url: "index.html?msg=" + info.selectionText.trim()});
+		//chrome.tabs.create({url: "index.html"});
+		} else {
+			chrome.tabs.create({url: "index.html"});
+		}
 	}
 };
 
@@ -17,7 +20,7 @@ chrome.runtime.onInstalled.addListener(() => {
 	  chrome.contextMenus.create({
 	  title: "ASLWrite Translate",
 	  id: "anyNameWillDo",
-	  contexts: ["selection"]
+	  contexts: ["all"]
 	});
 });
 
