@@ -273,9 +273,64 @@ async function translateText(){
 		cursorX += curSpace;
 	}
 	
+	else if (encodedMsg[charIndex] == "r"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/r.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "p"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/p.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "q"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/q.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
 	else if (encodedMsg[charIndex] == "s"){
 		const char1 = new Image();
 		char1.src = chrome.runtime.getURL("images/S.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "t"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/t.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "u"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/u.png");
 		await char1.decode();
 		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
 		GetGlyphProps(encodedMsg, char1Glyph);
