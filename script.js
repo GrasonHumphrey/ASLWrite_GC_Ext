@@ -339,6 +339,28 @@ async function translateText(){
 		cursorX += curSpace;
 	}
 	
+	else if (encodedMsg[charIndex] == "v"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/2.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "w"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/w.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
 	else if (encodedMsg[charIndex] == "x"){
 		const char1 = new Image();
 		char1.src = chrome.runtime.getURL("images/x.png");
@@ -373,10 +395,32 @@ async function translateText(){
 		cursorX += curSpace;
 	}
 	
+	else if (encodedMsg[charIndex] == "2"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/2.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
 	else if (encodedMsg[charIndex] == "5"){
 		//console.log(charIndex);
 		const char1 = new Image();
 		char1.src = chrome.runtime.getURL("images/5.png");
+		await char1.decode();
+		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+		GetGlyphProps(encodedMsg, char1Glyph);
+		DrawGlyph(ctx, char1, char1Glyph);
+		
+		cursorX += curSpace;
+	}
+	
+	else if (encodedMsg[charIndex] == "6"){
+		const char1 = new Image();
+		char1.src = chrome.runtime.getURL("images/w.png");
 		await char1.decode();
 		const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
 		GetGlyphProps(encodedMsg, char1Glyph);
@@ -456,6 +500,16 @@ async function translateText(){
 		
 				cursorX += curSpace;
 			}
+			else if (encodedMsg[charIndex] == "C") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Move_C2.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			}
 			else if (encodedMsg[charIndex] == ":") {
 				const char1 = new Image();
 				char1.src = chrome.runtime.getURL("images/Move_2.png");
@@ -475,7 +529,57 @@ async function translateText(){
 				DrawGlyph(ctx, char1, char1Glyph);
 		
 				cursorX += curSpace;
-			}				
+			}
+			else if (encodedMsg[charIndex] == "T") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Move_1v2.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			}
+			else if (encodedMsg[charIndex] == "u") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Move_Cv.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			}
+			else if (encodedMsg[charIndex] == "U") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Move_Cv2.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			}
+			else if (encodedMsg[charIndex] == "r") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Move_rock.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			}
+			else if (encodedMsg[charIndex] == "R") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Move_rock2.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			}
 			else {
 				charIndex -= 1;
 				const char1 = new Image();
@@ -523,7 +627,18 @@ async function translateText(){
 				DrawGlyph(ctx, char1, char1Glyph);
 		
 				cursorX += curSpace;
-			} else {
+			} 
+			else if (encodedMsg[charIndex] == "u") {
+				const char1 = new Image();
+				char1.src = chrome.runtime.getURL("images/Head_Front_Half.png");
+				await char1.decode();
+				const char1Glyph = new Glyph(xScale, yScale, flipX, flipY, char1.width, char1.height, rotation);
+				GetGlyphProps(encodedMsg, char1Glyph);
+				DrawGlyph(ctx, char1, char1Glyph);
+		
+				cursorX += curSpace;
+			} 
+			else {
 				charIndex -= 1;
 				const char1 = new Image();
 				char1.src = chrome.runtime.getURL("images/Shoulder.png");
@@ -581,7 +696,7 @@ async function translateText(){
 				DrawGlyph(ctx, char1, char1Glyph);
 		
 				cursorX += curSpace;
-			} 
+			}
 			else {
 				charIndex -= 1;
 				const char1 = new Image();
