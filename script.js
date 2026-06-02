@@ -62,7 +62,6 @@ document.getElementById("enterButton").addEventListener("click", translateText);
 
 document.getElementById("inputbox1").value = msg;
 
-translateText();
 
 
 const singleChars = {
@@ -153,6 +152,8 @@ const emmChars = {
 	o: "images/EMM_OpenMouth.png",
 	blank: "images/EMM_PressedLips.png"
 };
+
+translateText();
 
 
 async function translateText(){

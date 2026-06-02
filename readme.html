@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASLWrite Google Chrome Extension Guide</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        details {
+            background: #f8f8f8;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a {
+            color: #0066cc;
+        }
+
+        .symbol-structure {
+            font-size: 1.1em;
+            margin: 20px 0;
+        }
+
+        .completion-status {
+            background: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #4caf50;
+            margin: 20px 0;
+        }
+
+        figcaption {
+            text-align: center;
+            padding: 0px;
+        }
+
+        figure {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 0px;
+            text-align: center;
+            
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>ASLWrite Google Chrome Extension Guide</h1>
+
+    <details>
+        <summary>Table of Contents</summary>
+        <ol>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#handshapes">Handshapes</a></li>
+            <li><a href="#diacritics">Diacritics</a></li>
+            <li><a href="#movement-marks">Movement Marks</a></li>
+            <li>
+                <a href="#symbol-modifiers">Symbol Modifiers</a>
+                <ol>
+                    <li><a href="#height">Height</a></li>
+                    <li><a href="#rotation">Rotation</a></li>
+                    <li><a href="#mirror">Mirror</a></li>
+                    <li><a href="#modifiers-summary">Modifiers Summary</a></li>
+                </ol>
+            </li>
+            <li><a href="#symbol-spacers">Symbol Spacers</a></li>
+            <li>
+                <a href="#examples">Examples</a>
+                <ol>
+                    <li><a href="#examples-you">YOU</a></li>
+                    <li><a href="#examples-i-me">I/ME</a></li>
+                    <li><a href="#examples-go-ahead">GO AHEAD</a></li>
+                    <li><a href="#examples-address">ADDRESS</a></li>
+                    <li><a href="#examples-family">FAMILY</a></li>
+                    <li><a href="#examples-remember">REMEMBER</a></li>
+                </ol>
+            </li>
+            <li><a href="#appendix">Appendix: Extended Dictionary</a></li>
+        </ol>
+    </details>
+
+    <h2 id="summary">Summary</h2>
+
+    <p>
+        This ASLWrite viewer attempts to provide complete ASLWrite implementation in an easily usable format.
+    </p>
+
+    <p>
+        ASLWrite Viewer Google Chrome extension can be downloaded here:
+    </p>
+
+    <p><em>(coming soon)</em></p>
+
+    <p>
+        ASLWrite website:
+        <a href="https://slwrite.org/" target="_blank">https://slwrite.org/</a>
+    </p>
+
+    <p>
+        Written ASL words and sentences are formed by modifying and combining symbols with the following structure:
+    </p>
+
+    <div class="symbol-structure">
+        <span style="color:red;">[Symbol]</span>
+        <span style="color:Fuchsia;">[Mirror]</span>
+        <span style="color:DodgerBlue;">[Rotation]</span>
+        <span style="color:LimeGreen;">[Height]</span>
+        <span style="color:Chocolate;">[Spacer]</span>
+    </div>
+
+    <p>
+        Every combination must begin with a Symbol and end with a Spacer.
+        The Symbol can be a Handshape, Diacritic, Movement Mark, Body Position,
+        or Extramanual Mark. Height, Rotation, and Mirror modifiers are optional
+        and can be used in any order.
+    </p>
+
+    <p>
+        See the following sections for more information.
+    </p>
+
+    <div class="completion-status">
+        <strong>Current project completion status:</strong>
+        50% Complete (52/100 symbols)
+    </div>
+
+    <h2 id="handshapes">Handshapes</h2>
+    <details>
+    <summary>Handshape codes</summary>
+    <table style="width: 75%;">
+        <colgroup>
+            <col style="width: 16.67%;">
+            <col style="width: 16.67%;">
+            <col style="width: 16.67%;">
+            <col style="width: 16.67%;">
+            <col style="width: 16.67%;">
+            <col style="width: 16.67%;">
+        </colgroup>
+        <tbody>
+            <tr>
+                <td> <figure> <img src="docs/hs_1.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>1</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_2.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>2</figcaption> </figure> </td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+                <td> <figure> <img src="docs/hs_5.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>5</figcaption> </figure> </td>
+                <td>Coming soon</td>
+            </tr>
+            <tr>
+                <td> <figure> <img src="docs/hs_%.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>%</figcaption> </figure> </td>
+                <td> Coming soon </td>
+                <td> <figure> <img src="docs/hs_c_2.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>C</figcaption> </figure> </td>
+                <td>Coming soon</td>
+                <td> <figure> <img src="docs/hs_x.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>x</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_k.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>k</figcaption> </figure> </td>
+            </tr>
+            <tr>
+                <td> <figure> <img src="docs/hs_f.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>f</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_h.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>h</figcaption> </figure> </td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+            </tr>
+            <tr>
+                <td> <figure> <img src="docs/hs_b.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>b</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_b_2.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>B</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_s.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>s</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_a.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>a</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_a_2.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>A</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_y.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>y</figcaption> </figure> </td>
+            </tr>
+            <tr>
+                <td> <figure> <img src="docs/hs_o.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>o</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_c.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>c</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_g.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>g</figcaption> </figure> </td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+            </tr>
+            <tr>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+                <td> <figure> <img src="docs/hs_l.png" style="max-width: 100px; max-height: 150px;"/> <figcaption>l (lowercase L)</figcaption> </figure> </td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+                <td>Coming soon</td>
+            </tr>
+            <tr>
+                <td> <figure> <img src="docs/hs_d.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>d</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_e.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>e</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_m.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>m</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_n.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>n</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_r.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>r</figcaption> </figure> </td>
+                <td> <figure> <img src="docs/hs_t.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>t</figcaption> </figure> </td>
+            </tr>
+            <tr>
+                <td><figure> <img src="docs/hs_w.png" style="max-width: 50px; max-height: 75px;"/> <figcaption>w (or 6)</figcaption> </figure></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    </details>
+
+    <h2 id="diacritics">Diacritics</h2>
+
+    <h2 id="movement-marks">Movement Marks</h2>
+
+    <h2 id="body-positions">Body Positions</h2>
+
+    <h2 id="extramanual-marks">Extramanual Marks</h2>
+
+    <h2 id="symbol-modifiers">Symbol Modifiers</h2>
+
+    <h3 id="height">Height</h3>
+
+    <h3 id="rotation">Rotation</h3>
+
+    <h3 id="mirror">Mirror</h3>
+
+    <h3 id="modifiers-summary">Modifiers Summary</h3>
+
+    <h2 id="symbol-spacers">Symbol Spacers</h2>
+
+    <h2 id="examples">Examples</h2>
+
+    <h3 id="examples-you">YOU</h3>
+
+    <h3 id="examples-i-me">I/ME</h3>
+
+    <h3 id="examples-go-ahead">GO AHEAD</h3>
+
+    <h3 id="examples-address">ADDRESS</h3>
+
+    <h3 id="examples-family">FAMILY</h3>
+
+    <h3 id="examples-remember">REMEMBER</h3>
+
+    <h2 id="appendix">Appendix: Extended Dictionary</h2>
+
+</body>
+</html>
